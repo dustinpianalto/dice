@@ -7,6 +7,7 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/dustinpianalto/dice/exts"
 	"github.com/dustinpianalto/disgoman"
 )
 
@@ -50,12 +51,8 @@ func main() {
 		CheckPermissions: false,
 	}
 
-	// Add Command Handlers
-	exts.AddCommandHandlers(&handler)
-
-	//if _, ok := handler.Commands["help"]; !ok {
-	//	handler.AddDefaultHelpCommand()
-	//}
+	// Add Commands
+	exts.AddCommands(&handler)
 
 	dg.AddHandler(handler.OnMessage)
 	dg.AddHandler(handler.StatusManager.OnReady)

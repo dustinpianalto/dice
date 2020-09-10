@@ -55,6 +55,7 @@ func main() {
 	exts.AddCommands(&handler)
 
 	dg.AddHandler(handler.OnMessage)
+	dg.AddHandler(exts.DiceCommand)
 	dg.AddHandler(handler.StatusManager.OnReady)
 
 	err = dg.Open()

@@ -96,23 +96,6 @@ func processDie(part string, adv, dis bool) (int64, string, error) {
 			outString += " + " + strconv.FormatInt(out, 10)
 		}
 		val += out
-	} else {
-		size, err := strconv.ParseInt(part, 10, 64)
-		if err != nil {
-			return -1, outString, err
-		}
-		i, s, err := rollDie(size, adv, dis)
-		if err != nil {
-			return i, outString, err
-		}
-		val += i * mult
-		if mult > 0 {
-			outString += " + " + s
-		} else if mult < 0 {
-			outString += " - " + s
-		} else if mult > 0 {
-			outString += s
-		}
 	}
 	return val, outString, nil
 }
